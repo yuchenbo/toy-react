@@ -3,7 +3,7 @@ import { ToyReact, Component } from './ToyReact';
 class MyComponent extends Component {
     render() {
         return (
-            <div>
+            <div name='嵌套内层组件'>
                 <div>内层组件渲染节点</div>
                 <div>{this.children}</div>
                 <div>{true}</div>
@@ -12,8 +12,25 @@ class MyComponent extends Component {
     }
 }
 
-// const App = <MyComponent/>
-const App = <div name='ycb'>内层组件渲染节点</div>
+// class MyComponent extends Component {
+//     render() {
+//         return (
+//             <div name='嵌套内层组件'></div>
+//         )
+//     }
+// }
+
+
+const App = <MyComponent />
+// const App = <div name='ycb'>内层组件渲染节点</div>
+// const App = (
+//     <div>
+//         内层组件渲染节点
+//         <span>jsx0</span>
+//         <span>jsx1</span>
+//         <span>jsx2</span>
+//     </div>
+// )
 /*
 const App = (
     <div>
