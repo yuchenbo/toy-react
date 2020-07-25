@@ -1,49 +1,54 @@
 import { ToyReact, Component } from './ToyReact';
 
-class MyComponent extends Component {
-    render() {
+class Square extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            value: null,
+        }
+    }
+    render () {
         return (
-            <div name='嵌套内层组件'>
-                <div>内层组件渲染节点</div>
-                <div>{this.children}</div>
-                <div>{true}</div>
-            </div>
+            <button className="square" onClick={() => this.setState({value: 'X'})}>
+                {this.state.value ? this.state.value : ""}
+            </button>
         )
     }
 }
 
-// class MyComponent extends Component {
-//     render() {
-//         return (
-//             <div name='嵌套内层组件'></div>
-//         )
-//     }
-// }
+class Board extends Component {
+    renderSquare(i) {
+        return (
+            <Square
+                value={i}
+            />
+        );
+    }
+
+    render() {
+        return (
+            <div>
+                <div className="board-row">
+                    {this.renderSquare(0)}
+                    {this.renderSquare(1)}
+                    {this.renderSquare(2)}
+                </div>
+                <div className="board-row">
+                    {this.renderSquare(3)}
+                    {this.renderSquare(4)}
+                    {this.renderSquare(5)}
+                </div>
+                <div className="board-row">
+                    {this.renderSquare(6)}
+                    {this.renderSquare(7)}
+                    {this.renderSquare(8)}
+                </div>
+            </div>
+        );
+    }
+}
 
 
-const App = <MyComponent />
-// const App = <div name='ycb'>内层组件渲染节点</div>
-// const App = (
-//     <div>
-//         内层组件渲染节点
-//         <span>jsx0</span>
-//         <span>jsx1</span>
-//         <span>jsx2</span>
-//     </div>
-// )
-/*
-const App = (
-    <div>
-        <span>jsx0</span>
-        <span>jsx1</span>
-        <span>jsx2</span>
-    </div>
-)
-const App = <MyComponent/>
-const App = (
-    <MyComponent>
-        <p>自定义组件内部</p>
-    </MyComponent>
-)*/
+const App = <Board />
 
 export default App;
